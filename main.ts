@@ -7,6 +7,9 @@ makerbit.onIrButton(IrButton.Down, IrButtonAction.Pressed, function () {
 makerbit.onIrButton(IrButton.Up, IrButtonAction.Pressed, function () {
     basic.showArrow(ArrowNames.North)
 })
+makerbit.onIrButton(IrButton.Any, IrButtonAction.Pressed, function () {
+    serial.writeString("" + (makerbit.irButton()))
+})
 makerbit.onIrButton(IrButton.Right, IrButtonAction.Pressed, function () {
     basic.showArrow(ArrowNames.East)
 })
@@ -15,6 +18,3 @@ makerbit.onIrButton(IrButton.Ok, IrButtonAction.Pressed, function () {
 })
 makerbit.connectIrReceiver(DigitalPin.P0, IrProtocol.Keyestudio)
 serial.writeString("Hello")
-basic.forever(function () {
-    serial.writeString(makerbit.irDatagram())
-})
